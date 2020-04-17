@@ -15,4 +15,7 @@ class Animals{
         public boolean getAnimal(String animalWanted){
                 return (animalWanted.equals(mSpecies));
         }
+        public boolean adoptedOrNo(boolean adoptedStatus){
+            return mAdopted = !adoptedStatus;
+        }
 }

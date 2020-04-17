@@ -22,6 +22,10 @@ public class App{
                 System.out.println("Species: " + eachAnimal.mSpecies);
                 System.out.println("Age: " + eachAnimal.mAge);
                 System.out.println("Color: " + eachAnimal.mColor);
+//                boolean adoptedState = eachAnimal.mAdopted;
+
+//                eachAnimal.adoptedOrNo(adoptedState);
+
                 if ( eachAnimal.mAdopted == true){
                     System.out.println("It can be adopted!");
                 }else {
