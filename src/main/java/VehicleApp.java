@@ -1,5 +1,9 @@
+import java.io.Console;
+
 public class VehicleApp {
     public static void main(String[] args) {
+
+        Console myConsole = System.console();
 
         Vehicle hatchback = new Vehicle();
         hatchback.mYear = 1994;
@@ -38,16 +42,21 @@ public class VehicleApp {
 
         Vehicle[] allVehicles = {hatchback, suv, sedan, truck, crossover};
 
-        System.out.println("All Vehicles:");
+        System.out.println("What is your maximum budget for a vehicle?");
+        String stringUserMaxBudget = myConsole.readLine();
+        int userMaxBudget = Integer.parseInt(stringUserMaxBudget);
+
+        System.out.println("Alright, here's what we have in your price range:");
 
         for ( Vehicle individualVehicle : allVehicles ) {
-            System.out.println( "----------------------" );
-            System.out.println("Manufacture year: " + individualVehicle.mYear );
-            System.out.println("Car Brand: " + individualVehicle.mBrand );
-            System.out.println("Car Model: " + individualVehicle.mModel );
-            System.out.println("Mile Travelled: " + individualVehicle.mMiles );
-            System.out.println("Car Price: " + individualVehicle.mPrice );
+            if (individualVehicle.worthBuying(userMaxBudget)){
+                System.out.println("----------------------");
+                System.out.println("Manufacture year: " + individualVehicle.mYear);
+                System.out.println("Car Brand: " + individualVehicle.mBrand);
+                System.out.println("Car Model: " + individualVehicle.mModel);
+                System.out.println("Mile Travelled: " + individualVehicle.mMiles);
+                System.out.println("Car Price: " + individualVehicle.mPrice);
+            }
         }
-
     }
 }
