@@ -4,22 +4,15 @@ public class App{
     public static void main (String[] args){
         Console myConsole = System.console();
 
-        Animals Scobby = new Animals();
-            Scobby.mName = "Scobby";
-            Scobby.mSpecies = "Dog";
-            Scobby.mAge = 1;
-            Scobby.mColor = "White";
+        Animals scooby = new Animals("Scobby", "dog", "White", 4, true);
+        Animals mylo = new Animals("Mylo", "cat", "Brown", 2, false);
+        Animals stray = new Animals("Stray", "dog", "Black", 7, false);
+        Animals bibble = new Animals("Bibble", "cat", "Golden", 1, true);
 
-
-        Animals Mylo = new Animals();
-            Mylo.mName = "Mylo";
-            Mylo.mSpecies = "Cat";
-            Mylo.mAge = 1;
-            Mylo.mColor = "White";
-
-        Animals[] allAnimals = {Scobby, Mylo};
+        Animals[] allAnimals = {scooby, mylo, stray, bibble};
 
         System.out.println("What species of animal would you like? ");
+
         String animalWanted = myConsole.readLine();
 
         for ( Animals eachAnimal : allAnimals) {
@@ -29,6 +22,11 @@ public class App{
                 System.out.println("Species: " + eachAnimal.mSpecies);
                 System.out.println("Age: " + eachAnimal.mAge);
                 System.out.println("Color: " + eachAnimal.mColor);
+                if ( eachAnimal.mAdopted == true){
+                    System.out.println("It can be adopted!");
+                }else {
+                    System.out.println("Cannot be adopted at the moment!");
+                }
             }
         }
     }
