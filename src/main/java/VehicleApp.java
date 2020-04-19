@@ -3,8 +3,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class VehicleApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         Console myConsole = System.console();
+
+        Boolean repeatuntil = true;
 
         Vehicle hatchback = new Vehicle(1994, "Subaru", "Legacy", 170000, 4000);
         Vehicle suv = new Vehicle(2002, "Ford", "Explorer", 100000, 7000);
@@ -19,19 +21,19 @@ public class VehicleApp {
             allVehicles.add(truck);
             allVehicles.add(crossover);
 
-            while( true ) {
+            while( repeatuntil ) {
                 System.out.println("Welcome to our car dealership.");
-                System.out.println("What would you like to do? Enter the number: 1. All Vehicles or 2. Search Price or 3. Add a new Vehicle");
+                System.out.println("What would you like to do? Enter the number: 1. All Vehicles or 2. Search Price or 3. Add a new Vehicle or 4. Exit Application");
                 int navigationChoice = Integer.parseInt(myConsole.readLine());
 
                 if (navigationChoice == 1) {
                     for (Vehicle individualVehicle : allVehicles) {
                         System.out.println("----------------------");
-                        System.out.println(individualVehicle.mYear);
-                        System.out.println(individualVehicle.mBrand);
-                        System.out.println(individualVehicle.mModel);
-                        System.out.println(individualVehicle.mMiles);
-                        System.out.println(individualVehicle.mPrice);
+                        System.out.println(individualVehicle.getYear());
+                        System.out.println(individualVehicle.getBrand());
+                        System.out.println(individualVehicle.getModel());
+                        System.out.println(individualVehicle.getMiles());
+                        System.out.println(individualVehicle.getPrice());
                     }
 
                 } else if (navigationChoice == 2) {
@@ -43,11 +45,11 @@ public class VehicleApp {
                     for (Vehicle individualVehicle : allVehicles) {
                         if (individualVehicle.worthBuying(userMaxBudget)) {
                             System.out.println("----------------------");
-                            System.out.println("Manufacture Year: " + individualVehicle.mYear);
-                            System.out.println("Vehicle Brand: " + individualVehicle.mBrand);
-                            System.out.println("Vehicle Model: " + individualVehicle.mModel);
-                            System.out.println("Miles Covered: " + individualVehicle.mMiles);
-                            System.out.println("Vehicle Price: " + individualVehicle.mPrice);
+                            System.out.println("Manufacture Year: " + individualVehicle.getYear());
+                            System.out.println("Vehicle Brand: " + individualVehicle.getBrand());
+                            System.out.println("Vehicle Model: " + individualVehicle.getModel());
+                            System.out.println("Miles Covered: " + individualVehicle.getMiles());
+                            System.out.println("Vehicle Price: " + individualVehicle.getPrice());
                         }
                     }
 
@@ -76,7 +78,12 @@ public class VehicleApp {
                     Vehicle newVehicle = new Vehicle(enteredYear, enteredBrand, enteredModel, enteredMiles, enteredPrice);
                     allVehicles.add(newVehicle);
 
-                } else {
+                }else if (navigationChoice == 4){
+                    repeatuntil = false;
+                    System.out.println("Thank you for using our Vehicle App");
+                }
+
+                else {
                     System.out.println("Sorry that is not within our options!");
                 }
             }
